@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
-  resources :comments
+  get 'welcome/index'
+
+  resources :comments#声明一个符合 REST 架构的资源。
   resources :posts
+  
+  resources :articles do
+  resources :comments
+  end
+  resources :articles do
+  resources :reviews
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
